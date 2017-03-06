@@ -1,0 +1,2 @@
+Repository for the implementation of the Orthogonal Nonnegative Matrix Trifactorization algorithm following Ding(2006).
+C. Ding, T. Li, W. Peng, and H. Park. Orthogonal nonnegative matrix tri-factorizations for clustering. In SIGKDD, 2006.
