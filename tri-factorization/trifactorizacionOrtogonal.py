@@ -48,7 +48,7 @@ def calcularS( F, G, S, X):
     Snew = nan_to_num( S * Snew)
     return Snew
 
-def onmftf(X, item_rank, user_rank, alpha=1.0, max_iter=1000, umbral_conv=1.0):
+def onmftf(X, item_rank, user_rank, alpha=1.0, max_iter=1000, umbral_conv=0.5):
         """
         Fast non-negative matrix tri factorization.
         Parameters
@@ -82,8 +82,6 @@ def onmftf(X, item_rank, user_rank, alpha=1.0, max_iter=1000, umbral_conv=1.0):
         i = 0
         while (convergence > umbral_conv) and (i < max_iter):
             
-            print("F matrix...")
-            print(F)
             #actualizo las matrices
             G = calcularG( F, G, S, X)           
             F = calcularF( F, G, S, X)
@@ -95,7 +93,7 @@ def onmftf(X, item_rank, user_rank, alpha=1.0, max_iter=1000, umbral_conv=1.0):
             Xaprox = np.dot(Xaprox,Gt)
             ConvergeMatrix = X - Xaprox
             convergence = LA.norm(ConvergeMatrix)
-            print("Convergencia...{}".format(convergence))
+            #print("Convergencia...{}".format(convergence))
             i+=1
         print("#iteraciones...{}".format(i))
         return F, S, G
